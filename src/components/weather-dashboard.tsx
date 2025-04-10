@@ -5,6 +5,7 @@ import { CurrentWeather } from './current-weather';
 import { Button } from './ui/button';
 import { RefreshCcw } from 'lucide-react';
 import { WeatherDetails } from './weather-details';
+import { WeatherForcast } from './weather-forecast';
 
 export const WeatherDashboard = ({searchedCity}: {searchedCity: string}) => {
 
@@ -31,7 +32,7 @@ export const WeatherDashboard = ({searchedCity}: {searchedCity: string}) => {
             fetchWeather(loc);
           },
           () => {
-            fetchWeather("Chennai"); // default fallback
+            fetchWeather("Chennai"); // default 
           }
         );
       }
@@ -39,25 +40,22 @@ export const WeatherDashboard = ({searchedCity}: {searchedCity: string}) => {
 
     console.log("data", data)
 
-    const handleRefresh = () => {
-
-    }
 
   return (
     <div className="p-4 space-y-4">
     {error && <p className="text-red-500">{error}</p>}
     {data && (
-      <div className="space-y-4 h-screen px-10">
+      <div className="space-y-4 h-screen px-20">
       <div className="flex gap-2 items-center justify-between mx-4">
         <h1 className="text-xl font-bold tracking-tight">My Location</h1>
-        <Button variant={"outline"} size={"icon"} onClick={handleRefresh}>
-            <RefreshCcw className={`size-4 ${data.current ? '': 'animate-spin'}`}/>
-        </Button>
         </div>
-        <div>
+        <div className='grid grid-row-2 gap-8'>
 
         <CurrentWeather location={data.location} current={data.current} />
+        <div className='grid gap-6 md:grid-cols-2 items-start'>
         <WeatherDetails current={data.current} forecast={data.forecast}/>
+        <WeatherForcast forecast={data.forecast}/>
+        </div>
       </div>
       </div>
     )}

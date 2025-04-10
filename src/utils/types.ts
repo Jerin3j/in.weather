@@ -26,7 +26,7 @@ export interface WeatherData {
   }
   
   export interface ForecastDay {
-    date: string
+    date: number
     day: {
       maxtemp_c: number
       mintemp_c: number
@@ -39,16 +39,6 @@ export interface WeatherData {
     astro: {
       sunrise: string
       sunset: string
-    }
-    hour: HourlyForecast[]
-  }
-  
-  export interface HourlyForecast {
-    time: string
-    temp_c: number
-    condition: {
-      text: string
-      icon: string
     }
   }
   

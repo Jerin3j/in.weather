@@ -15,10 +15,12 @@ type CurrentWeatherProps = {
 }
   
 export const CurrentWeather = ({current, location}: CurrentWeatherProps) => {
+    
+    const highResIcon = current.condition.icon.replace("64x64", "128x128");
 
     const formatTemp = (temp: number) => `${Math.round(temp)}°`
   return (
-    <Card className="overflow-hidden w-[80%]">
+    <Card className="overflow-hidden w-full mx-auto">
       <CardContent className="p-6">
         <div className="grid gap-6 md:grid-cols-2">
             <div className="space-y-4">
@@ -63,7 +65,7 @@ export const CurrentWeather = ({current, location}: CurrentWeatherProps) => {
             <div className="flex flex-col items-center justify-center">
                 <div className="relative flex aspect-square w-full max-w-[200px] items-center justify-center">
                     <img 
-                      src={`https:${current.condition.icon}`}
+                      src={`https:${highResIcon}`}
                       className="w-full h-full object-contain"
                     />
                     <div className="absolute bottom-0 text-center">
