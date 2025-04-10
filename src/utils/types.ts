@@ -13,6 +13,9 @@ export interface WeatherData {
         icon: string
       }
       wind_kph: number
+      wind_dir: string
+      wind_degree: number
+      pressure_mb: number
       humidity: number
       feelslike_c: number
       feelslike_f: number

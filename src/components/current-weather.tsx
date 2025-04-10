@@ -18,7 +18,7 @@ export const CurrentWeather = ({current, location}: CurrentWeatherProps) => {
 
     const formatTemp = (temp: number) => `${Math.round(temp)}°`
   return (
-    <Card className="overflow-hidden w-full">
+    <Card className="overflow-hidden w-[80%]">
       <CardContent className="p-6">
         <div className="grid gap-6 md:grid-cols-2">
             <div className="space-y-4">

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { CurrentWeather } from './current-weather';
 import { Button } from './ui/button';
 import { RefreshCcw } from 'lucide-react';
+import { WeatherDetails } from './weather-details';
 
 export const WeatherDashboard = ({searchedCity}: {searchedCity: string}) => {
 
@@ -56,6 +57,7 @@ export const WeatherDashboard = ({searchedCity}: {searchedCity: string}) => {
         <div>
 
         <CurrentWeather location={data.location} current={data.current} />
+        <WeatherDetails current={data.current} forecast={data.forecast}/>
       </div>
       </div>
     )}
