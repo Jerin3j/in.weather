@@ -13,11 +13,11 @@ export const WeatherForcast = ({ forecast }: WeatherForcastProps) => {
 
 
   return (
-    <div className="flex gap-10 ">
+    <div className="flex flex-col md:flex-row gap-10 justify-center items-center mb-3 md:mb-0">
       {dailyForecast.map((day, index) => (
         <Card
           key={index}
-          className="rounded-xl bg-muted p-4 flex flex-col items-center justify-center text-center"
+          className="w-[70%] md:w-1/3 h-60 md:h-auto rounded-xl bg-muted p-4 flex flex-col items-center justify-center text-center"
         >
           <p className="font-semibold text-sm">
             {format(new Date(day.date), 'EEE, dd MMM')}

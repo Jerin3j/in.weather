@@ -1,16 +1,15 @@
 import { WeatherData } from '@/utils/types';
 import { fetchWeatherData } from '@/utils/weather';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { CurrentWeather } from './current-weather';
-import { Button } from './ui/button';
-import { RefreshCcw } from 'lucide-react';
 import { WeatherDetails } from './weather-details';
 import { WeatherForcast } from './weather-forecast';
+import { Alert, AlertDescription, AlertTitle } from './ui/alert';
 
 export const WeatherDashboard = ({searchedCity}: {searchedCity: string}) => {
 
     const [data, setData] = useState<WeatherData>();
-    const [error, setError] = useState("");
+    const [error, setError] = useState<"" | "location-denied" | "invalid-city">("");
   
     useEffect(() => {
       const fetchWeather = async (location: string) => {
@@ -19,7 +18,7 @@ export const WeatherDashboard = ({searchedCity}: {searchedCity: string}) => {
           setData(res);
           setError("");
         } catch (err: any) {
-          setError(err.message);
+          setError('invalid-city');
         }
       };
   
@@ -32,7 +31,7 @@ export const WeatherDashboard = ({searchedCity}: {searchedCity: string}) => {
             fetchWeather(loc);
           },
           () => {
-            fetchWeather("Chennai"); // default 
+            setError('location-denied')
           }
         );
       }
@@ -40,19 +39,35 @@ export const WeatherDashboard = ({searchedCity}: {searchedCity: string}) => {
 
     console.log("data", data)
 
-
   return (
     <div className="p-4 space-y-4">
-    {error && <p className="text-red-500">{error}</p>}
+       {error === "invalid-city" && (
+      <Alert variant="destructive">
+        <AlertTitle>Invalid City Name</AlertTitle>
+        <AlertDescription>
+          Please enter a valid location. We couldn't find the weather for this city.
+        </AlertDescription>
+      </Alert>
+    )}
+    
+    {error === "location-denied" && (
+      <Alert variant="destructive">
+        <AlertTitle>Location Access Denied</AlertTitle>
+        <AlertDescription>
+        Location access was denied. Please enable it or manually enter location to see weather updates for your current location.
+        </AlertDescription>
+      </Alert>
+    )}
+
     {data && (
-      <div className="space-y-4 h-screen px-20">
+      <div className="space-y-4 md:px-20 mb-10">
       <div className="flex gap-2 items-center justify-between mx-4">
         <h1 className="text-xl font-bold tracking-tight">My Location</h1>
         </div>
         <div className='grid grid-row-2 gap-8'>
 
         <CurrentWeather location={data.location} current={data.current} />
-        <div className='grid gap-6 md:grid-cols-2 items-start'>
+        <div className='grid gap-6 grid-cols-1 md:grid-cols-2 items-start'>
         <WeatherDetails current={data.current} forecast={data.forecast}/>
         <WeatherForcast forecast={data.forecast}/>
         </div>
