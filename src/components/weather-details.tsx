@@ -1,7 +1,6 @@
 import { WeatherData } from '@/utils/types'
 import { Compass, Gauge, Sunrise, Sunset } from 'lucide-react';
-import React from 'react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 
 type WeatherDetailsProps = {
     current : WeatherData["current"],

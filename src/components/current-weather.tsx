@@ -1,13 +1,9 @@
 import {
     Card,
     CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
   } from "@/components/ui/card"
 import { WeatherData } from "@/utils/types";
-import { ArrowDown, Droplets, Wind } from "lucide-react";
+import { Droplets, Wind } from "lucide-react";
 
 type CurrentWeatherProps = {
     current : WeatherData["current"],
