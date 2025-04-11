@@ -41,11 +41,3 @@ A responsive and user-friendly weather dashboard built with **React**, **TypeScr
 - [Vite](https://vitejs.dev/) for fast build and dev environment
 
 ---
-
-## Getting Started
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/yourusername/weather-dashboard.git
-cd weather-dashboard
