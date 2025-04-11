@@ -2,7 +2,7 @@
 
 A responsive and user-friendly weather dashboard built with **React**, **TypeScript**, **Tailwind CSS**, and **ShadCN UI**. It allows users to check the current weather, detailed weather stats, and a 3-day forecast based on their location or a searched city.
 
-[Live Demo](https://inweather.jerin3j.vercel.app)
+[Live Demo](https://inweather.vercel.app/)
 
 ---
 
