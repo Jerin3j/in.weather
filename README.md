@@ -1,54 +1,51 @@
-# React + TypeScript + Vite
+# Weather Dashboard App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive and user-friendly weather dashboard built with **React**, **TypeScript**, **Tailwind CSS**, and **ShadCN UI**. It allows users to check the current weather, detailed weather stats, and a 3-day forecast based on their location or a searched city.
 
-Currently, two official plugins are available:
+[Live Demo](https://inweather.jerin3j.vercel.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Search City Weather** – Search any location to view weather details.
+- **Auto Location Detection** – Fetches weather based on user’s current geolocation (with fallback).
+- **Current Weather Info**
+  - Location name
+  - Temperature (`°C`)
+  - Weather condition (image + text)
+  - Wind speed
+  - Humidity
+- **Additional Details**
+  - Sunrise & Sunset time
+  - Wind degree
+  - Atmospheric pressure
+- **3-Day Forecast**
+  - Shows today, tomorrow, and the day after with condition image, text, and temperature range
+- **Responsive Design** – Optimized for mobile and desktop views.
+- **Dark Mode** – Toggle between light and dark themes.
+- **Error Handling**
+  - Alert for invalid city names
+  - Alert when location access is denied (defaults to Chennai)
+- **Skeleton Loading** – Seamless loading experience when fetching data.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Tech Stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [ShadCN UI](https://ui.shadcn.dev/)
+- [WeatherAPI.com](https://www.weatherapi.com/) for weather data
+- [Vite](https://vitejs.dev/) for fast build and dev environment
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+---
+
+## Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/yourusername/weather-dashboard.git
+cd weather-dashboard
