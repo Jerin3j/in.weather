@@ -25,6 +25,7 @@ export const WeatherDashboard = ({
         setLoading(false);
         setError("");
       } catch (err: any) {
+        // setLoading(true)
         setError("invalid-city");
       }
     };
