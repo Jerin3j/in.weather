@@ -7,7 +7,7 @@ type WeatherForcastProps = {
 }
 
 export const WeatherForcast = ({ forecast }: WeatherForcastProps) => {
-  // Take first 5 forecast days
+  //take forcast arr 3 values
   const dailyForecast = forecast.forecastday.slice(0, 3)
   const formatTemp = (temp: number) => `${Math.round(temp)}°`
 

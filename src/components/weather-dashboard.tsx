@@ -5,10 +5,12 @@ import { CurrentWeather } from './current-weather';
 import { WeatherDetails } from './weather-details';
 import { WeatherForcast } from './weather-forecast';
 import { Alert, AlertDescription, AlertTitle } from './ui/alert';
+import { SkeltonLoader } from './skelton-loader';
 
 export const WeatherDashboard = ({searchedCity}: {searchedCity: string}) => {
 
     const [data, setData] = useState<WeatherData>();
+    const [loading, setLoading] = useState(true)
     const [error, setError] = useState<"" | "location-denied" | "invalid-city">("");
   
     useEffect(() => {
@@ -16,6 +18,7 @@ export const WeatherDashboard = ({searchedCity}: {searchedCity: string}) => {
         try {
           const res = await fetchWeatherData(location);
           setData(res);
+          setLoading(false)
           setError("");
         } catch (err: any) {
           setError('invalid-city');
@@ -59,20 +62,24 @@ export const WeatherDashboard = ({searchedCity}: {searchedCity: string}) => {
       </Alert>
     )}
 
-    {data && (
-      <div className="space-y-4 md:px-20 mb-10">
-      <div className="flex gap-2 items-center justify-between mx-4">
-        <h1 className="text-xl font-bold tracking-tight">My Location</h1>
+    {loading ? (
+      <SkeltonLoader/>
+    ) : (
+      data && (
+        <div className="space-y-4 md:px-20 mb-10">
+        <div className="flex gap-2 items-center justify-between mx-4">
+          <h1 className="text-xl font-bold tracking-tight">My Location</h1>
+          </div>
+          <div className='grid grid-row-2 gap-8'>
+  
+          <CurrentWeather location={data.location} current={data.current} />
+          <div className='grid gap-6 grid-cols-1 md:grid-cols-2 items-start'>
+          <WeatherDetails current={data.current} forecast={data.forecast}/>
+          <WeatherForcast forecast={data.forecast}/>
+          </div>
         </div>
-        <div className='grid grid-row-2 gap-8'>
-
-        <CurrentWeather location={data.location} current={data.current} />
-        <div className='grid gap-6 grid-cols-1 md:grid-cols-2 items-start'>
-        <WeatherDetails current={data.current} forecast={data.forecast}/>
-        <WeatherForcast forecast={data.forecast}/>
         </div>
-      </div>
-      </div>
+      )
     )}
   </div>
   )

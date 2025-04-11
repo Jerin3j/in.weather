@@ -66,10 +66,10 @@ export const CurrentWeather = ({current, location}: CurrentWeatherProps) => {
                 <div className="relative flex aspect-square w-full max-w-[200px] items-center justify-center">
                     <img 
                       src={`https:${highResIcon}`}
-                      className="w-full h-full object-contain"
+                      className="w-full h-full object-contain mb-4"
                     />
                     <div className="absolute bottom-0 text-center">
-                        <p className="text- font-medium capitalize">
+                        <p className="font-medium capitalize">
                             {current.condition.text}
                         </p>
                     </div>
